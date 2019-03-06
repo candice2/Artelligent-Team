@@ -19,8 +19,10 @@ lineWidthRange.addEventListener( 'input', event => {
 
 let x = 0, y = 0;
 let isMouseDown = false;
+//required output from sketch
+var strokesList=[];
 
-const stopDrawing = () => { isMouseDown = false; }
+const stopDrawing = () => { isMouseDown = false; console.log(strokesList);}
 const startDrawing = event => {
     isMouseDown = true;   
    [x, y] = [event.offsetX, event.offsetY];  
@@ -47,7 +49,13 @@ const drawLine = event => {
         context.moveTo( x, y );
         context.lineTo( newX, newY );
         context.stroke();
+
+        let strokeObj={x:newX, y:newY}
+        strokesList.push(strokeObj);
+
         [x, y] = [newX, newY];
+
+
     }
 }
 
