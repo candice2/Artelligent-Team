@@ -17,12 +17,29 @@ lineWidthRange.addEventListener( 'input', event => {
     context.lineWidth = width;
 } );
 
+var strokesListX=[];
+var strokesListY=[];
+
 let x = 0, y = 0;
 let isMouseDown = false;
 //required output from sketch
-var strokesList=[];
 
-const stopDrawing = () => { isMouseDown = false; console.log(strokesList);}
+var listOfStrokes=[];
+
+const stopDrawing = () => {
+    isMouseDown = false;
+    var stroke=[strokesListX,strokesListY];
+    listOfStrokes.push(stroke);
+
+    var myJSON = JSON.stringify(listOfStrokes);
+
+    console.log(myJSON);
+
+    strokesListX=[];
+    strokesListY=[];
+
+}
+
 const startDrawing = event => {
     isMouseDown = true;   
    [x, y] = [event.offsetX, event.offsetY];  
@@ -30,7 +47,9 @@ const startDrawing = event => {
    console.log(y);
 }
 const drawLine = event => {
+
     if ( isMouseDown ) {
+
         //track all x,y coordinates
         const newX = event.offsetX;
         const newY = event.offsetY;
@@ -50,13 +69,16 @@ const drawLine = event => {
         context.lineTo( newX, newY );
         context.stroke();
 
-        let strokeObj={x:newX, y:newY}
-        strokesList.push(strokeObj);
+
+
+        strokesListX.push(newX);
+        strokesListY.push(newY);
 
         [x, y] = [newX, newY];
 
 
     }
+
 }
 
 paintCanvas.addEventListener( 'mousedown', startDrawing );
