@@ -1,0 +1,22 @@
+{
+  "name": "artelligent-team",
+  "version": "1.0.0",
+  "description": "artelligent backend",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://mohitgro@github.com/candice2/Artelligent-Team.git"
+  },
+  "author": "mohit,charu,candice",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/candice2/Artelligent-Team/issues"
+  },
+  "homepage": "https://github.com/candice2/Artelligent-Team#readme",
+  "dependencies": {
+    "express": "^4.16.4"
+  }
+}
