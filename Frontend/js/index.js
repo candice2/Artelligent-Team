@@ -42,7 +42,7 @@ const stopDrawing = () => {
             document.getElementById("demo").innerHTML = xhttp.responseText;
         }
     };
-    xhttp.open("GET", "filename", true);
+    xhttp.open("POST", "localhost:3000/run", true);
     xhttp.send(myJSON);
 
     strokesListX=[];
