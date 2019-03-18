@@ -18,5 +18,10 @@
   "homepage": "https://github.com/candice2/Artelligent-Team#readme",
   "dependencies": {
     "express": "^4.16.4"
+  },
+  "devDependencies": {
+    "body-parser": "^1.18.3",
+    "nodemon": "^1.18.10",
+    "python-shell": "^1.0.7"
   }
 }
