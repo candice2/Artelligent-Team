@@ -8,7 +8,7 @@ var exec = require('child_process').exec;
 
 router.post('/run',function(req,res){
 
-    let data = req.body.data;
+    let data = req.body;
     // PythonShell.run('train_model2.py',{scriptPath:"/Users/mohitgrover/repos/ai/Artelligent-Team",args: ["--classes_file='training.tfrecord.classes'","--model_dir='/modelV1'","--predict_for_data:'"+data+"'"]}, function(err,results){
     //     if(err) throw err;
     //     console.log(results);
