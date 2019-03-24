@@ -30,8 +30,9 @@ const stopDrawing = () => {
     isMouseDown = false;
     var stroke=[strokesListX,strokesListY];
     listOfStrokes.push(stroke);
-
-    var myJSON = JSON.stringify(listOfStrokes);
+    var st = JSON.stringify(listOfStrokes)
+    var output = {data:st};
+    var myJSON = JSON.stringify(output);
 
     console.log(myJSON);
 
@@ -39,11 +40,13 @@ const stopDrawing = () => {
     xhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
             // Typical action to be performed when the document is ready:
-            document.getElementById("demo").innerHTML = xhttp.responseText;
+           // document.getElementById("demo").innerHTML = xhttp.responseText;
         }
     };
-    xhttp.open("POST", "localhost:3000/run", true);
+    xhttp.open("POST", "http://localhost:3000/run", true);
+    xhttp.setRequestHeader("content-type", "application/json");
     xhttp.send(myJSON);
+
 
     strokesListX=[];
     strokesListY=[];
