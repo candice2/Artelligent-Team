@@ -4,8 +4,7 @@ const http = require('http').Server(app);
 const router = require('./routes/router');
 const bodyParser = require('body-parser');
 
-
-app.use('/home', express.static('Frontend'));
+app.use('/home', express.static('sketcher'));
 app.use(bodyParser.json());
 app.use('/',router);
 
