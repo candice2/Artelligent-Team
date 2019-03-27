@@ -3,7 +3,8 @@
     width: 230px;
     height: 1px;
     border-radius: 3px;
-    background: #d3d3d3;
+    /*background: #d3d3d3;*/
+    background: black;
     outline: none;
     opacity: 0.9;
     -webkit-transition: .2s;
@@ -20,7 +21,8 @@
     width: 25px;
     height: 25px;
     border-radius: 50%;
-    background: #007AFF;
+    /*background: #007AFF;*/
+    background: #33CAFF;
     cursor: pointer;
 }
 
@@ -31,3 +33,5 @@
     background: #007AFF;
     cursor: pointer;
 }
+
+

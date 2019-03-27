@@ -32,25 +32,31 @@
 
 	
 </head>
-<body>
-<nav class="navbar navbar-expand-sm bg-light navbar-light">
-  <!-- Brand/logo -->
-  <a class="navbar-brand" href="#"><h1>Artelligent</h1></a>
-  </nav>
+<body style="background-color: #FFFF00">
+<!-- <nav class="navbar navbar-expand-sm" style="text-align: center;">
+
+  <a href="#"><img src="arte.png"></a>
+  </nav> -->
+  <div id="logo" style="text-align: center;">
+    <a href="#"><img src="arte.png"></a>
+    
+  </div>
 
   
 
+<div id="container" style="margin-top: 40px; margin-bottom: 40px;">
+  <div class="row">
+  <div class="col" style="margin-left: 100px;">
+  <!-- <div class="col" style ='margin-left:100px;'> -->
 
-<div class="row">
-  <div class="col" style ='margin-left:100px;'>
-<!----h4 id ='status' >Loading Model... </h4-->	  
 <input type="color"  class="js-color-picker" id = 'colorpicker'>
-<canvas id="canvas" width="600" height="600" class="canvas" style="border:1px solid #b9bfc9;margin-top:25px;"></canvas>
+<canvas id="canvas" width="1200" height="600" class="canvas" style="border:1px solid #b9bfc9;margin-top:25px;"></canvas>
 <div class="btn-group" style = 'margin-top:40px; '>
 <input type="range" min="5" max="20" value="10" class="slider" id="myRange" style ='margin-top:20px;'>
-<button type="button" class="btn btn-outline-primary" onclick ='erase()' style ='margin-left:10px;' disabled>Clear</button>
+<button type="button" class="btn" onclick ='erase()' style ='margin-left:10px; color: #33CAFF; background-color: black;' disabled>Clear</button>
     </div>   
 </div>
+<!-- btn-outline-primary -->
   <!-- <div class="col">
     <section style="margin-top:120px">
     <div class="pieID pie">
@@ -81,6 +87,9 @@
   </section>
 </div> -->
 </div>  
+</div>
+  
+
 </body>
 <script src="pie.js"></script>
 <script>
