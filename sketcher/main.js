@@ -49,8 +49,10 @@ function setTable(top5, probs) {
     for (var i = 0; i < top5.length; i++) {
         let sym = document.getElementById('sym' + (i + 1))
         let prob = document.getElementById('prob' + (i + 1))
-        sym.innerHTML = top5[i]
-        prob.innerHTML = Math.round(probs[i] * 100)
+        //console.log("prediction: " + sym + " probablility: " + prob);
+        
+       // sym.innerHTML = top5[i]
+       // prob.innerHTML = Math.round(probs[i] * 100)
     }
     //create the pie 
     createPie(".pieID.legend", ".pieID.pie");
@@ -130,7 +132,8 @@ function getFrame() {
         const indices = findIndicesOfMax(pred, 5)
         const probs = findTopValues(pred, 5)
         const names = getClassNames(indices)
-
+        console.log(names);
+        console.log(probs);
         //set the table 
         setTable(names, probs)
     }
@@ -199,6 +202,7 @@ function findTopValues(inp, count) {
     // show 5 greatest scores
     for (var i = 0; i < indices.length; i++)
         outp[i] = inp[indices[i]]
+    console.log(outp);
     return outp
 }
 
