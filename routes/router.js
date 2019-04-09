@@ -5,6 +5,8 @@ let {PythonShell} = require("python-shell");
 var sys = require('sys')
 var exec = require('child_process').exec;
 
+var downloader = require('./downloader');
+
 
 router.post('/run',function(req,res){
 
@@ -26,6 +28,22 @@ router.post('/run',function(req,res){
     res.setHeader('Access-Control-Allow-Origin', '*');
     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
     res.send("done");
+});
+
+router.get('/image',function(req,res){
+  let imageName = req.query.image;
+  downloader.downloadImage(imageName);
+
+  return res.status(200);
+});
+
+router.get('/imageUrl',function(req,res){
+  let imageName = req.query.image;
+  console.log("here");
+  let url = downloader.getImageUrl(imageName,res);
+
+  console.log("this is a url" + url);
+  //return res.status(200).json(url);
 });
 
 module.exports = router;

@@ -118,6 +118,35 @@ function getImageData() {
 /*
 get the prediction 
 */
+
+function displayImage(min_coors,max_coors,url){
+    console.log("displaying image....");
+    fabric.Image.fromURL(url, function(myImg) {
+    //i create an extra var for to change some image properties
+    var img1 = myImg.set({ left: min_coors.x, top: min_coors.y ,width:max_coors.x-min_coors.x,height:max_coors.y-min_coors.y});
+    canvas.add(img1); 
+    });
+}
+
+function showImage(imageName){
+    console.log("here");
+    const Http = new XMLHttpRequest();
+    const url="http://localhost:3000/imageUrl?image=" + imageName;
+    Http.open("GET", url);
+    Http.send();
+    Http.onreadystatechange=(e)=>{
+    //console.log(Http.responseText);
+    var response = JSON.parse(Http.responseText);
+    console.log(response);
+    var url = response.url;
+    console.log(url);
+    displayImage({x:0,y:0},{x:150,y:150},url);
+    return false;
+}
+
+}
+
+//displayImage({x:0,y:0},{x:150,y:150},"https://images.pexels.com/photos/1274260/pexels-photo-1274260.jpeg");
 function getFrame() {
     //make sure we have at least two recorded coordinates 
     if (coords.length >= 2) {
@@ -125,6 +154,7 @@ function getFrame() {
         //get the image data from the canvas 
         const imgData = getImageData()
 
+        let min_coords,max_coords = getMinBox();
         //get the prediction 
         const pred = model.predict(preprocess(imgData)).dataSync()
 
@@ -134,6 +164,21 @@ function getFrame() {
         const names = getClassNames(indices)
         console.log(names);
         console.log(probs);
+        var ele = document.getElementById("suggestions");
+        console.log(ele);
+        ele.innerHTML = "";
+        var list = document.createElement("ul");
+        for(var i = 0; i < names.length; i++){
+            var link = document.createElement("a");
+            link.href = "javascript:showImage('"+names[i]+"');";
+           // link.onclick = "'showImage(" +min_coords + "," + max_coords + "," +names[i]+")'";
+            var t = document.createTextNode(names[i] + " (" + probs[i] + ")");
+            link.appendChild(t);
+            var li = document.createElement("li");
+            li.appendChild(link);
+            list.appendChild(li);
+        }
+        ele.appendChild(list);
         //set the table 
         setTable(names, probs)
     }
