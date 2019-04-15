@@ -19,6 +19,7 @@ $(function() {
     canvas.freeDrawingBrush.color = "black";
     canvas.freeDrawingBrush.width = 10;
 
+
     var colorPicker = document.getElementById('colorpicker');
    
     
@@ -34,11 +35,19 @@ $(function() {
         mousePressed = false
     });
     canvas.on('mouse:down', function(e) {
+       /* var elementId = (e.target || e.srcElement).id;
+        console.log(elementId);*/
         mousePressed = true
     });
     canvas.on('mouse:move', function(e) {
         recordCoor(e)
     });
+/*    canvas.on('mouse:dblclick', function (event) {
+        if (canvas.getActiveObject(img1)) {
+            alert(event.target);
+        }
+    });*/
+
 })
 
 /*
@@ -55,7 +64,7 @@ function setTable(top5, probs) {
        // prob.innerHTML = Math.round(probs[i] * 100)
     }
     //create the pie 
-    createPie(".pieID.legend", ".pieID.pie");
+  //  createPie(".pieID.legend", ".pieID.pie");
 
 }
 
@@ -119,28 +128,61 @@ function getImageData() {
 get the prediction 
 */
 
-function displayImage(min_coors,max_coors,url){
+function displayImage(min_coors,max_coors,url) {
     console.log("displaying image....");
-    fabric.Image.fromURL(url, function(myImg) {
-    //i create an extra var for to change some image properties
-    var img1 = myImg.set({ left: min_coors.x, top: min_coors.y ,width:max_coors.x-min_coors.x,height:max_coors.y-min_coors.y});
-    canvas.add(img1); 
+    fabric.Image.fromURL(url, function (myImg) {
+        //i create an extra var for to change some image properties
+        var img1 = myImg.set({
+            id: "imageId",
+            selectable: true,
+            left: min_coors.x,
+            top: min_coors.y,
+            width: max_coors.x - min_coors.x,
+            height: max_coors.y - min_coors.y
+        });
+        img1.scale(0.4);
+
+        canvas.clear();
+        canvas.backgroundColor = '#ffffff';
+
+        canvas.add(img1);
+        canvas.isDrawingMode = 0;
+       /* img1.on(    , function() {
+            console.log('selected a circle');
+        });*/
+        //canvas.renderAll();
     });
+
 }
 
+
 function showImage(imageName){
-    console.log("here");
+    /*imageName="image/apple_0.png"*/
+    console.log("imge"+imageName);
     const Http = new XMLHttpRequest();
-    const url="http://localhost:3000/imageUrl?image=" + imageName;
+    //const url="http://localhost:3000/imageUrl?image=" + imageName;
+    var url="";
+if(imageName === 'apple') {
+    var url = "http://localhost:3000/home/images/apple.png";
+}
+else if(imageName === "star"){
+    var url = "http://localhost:3000/home/images/star.png";
+}
+else if(imageName === "sun"){
+    var url = "http://localhost:3000/home/images/sun.png";
+}
+else if(imageName === "moon"){
+    var url = "http://localhost:3000/home/images/moon.png";
+}
+else if(imageName === "clock"){
+    var url = "http://localhost:3000/home/images/clock.png";
+}
+
     Http.open("GET", url);
     Http.send();
     Http.onreadystatechange=(e)=>{
-    //console.log(Http.responseText);
-    var response = JSON.parse(Http.responseText);
-    console.log(response);
-    var url = response.url;
     console.log(url);
-    displayImage({x:0,y:0},{x:150,y:150},url);
+    displayImage({x:400,y:100},{x:1500,y:1500},url);
     return false;
 }
 
@@ -171,7 +213,6 @@ function getFrame() {
         for(var i = 0; i < names.length; i++){
             var link = document.createElement("a");
             link.href = "javascript:showImage('"+names[i]+"');";
-           // link.onclick = "'showImage(" +min_coords + "," + max_coords + "," +names[i]+")'";
             var t = document.createTextNode(names[i] + " (" + probs[i] + ")");
             link.appendChild(t);
             var li = document.createElement("li");
