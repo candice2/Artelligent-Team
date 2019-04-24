@@ -165,23 +165,28 @@ function showImage(imageName){
     var url="";
 if(imageName === 'apple') {
     var url = "http://localhost:3000/home/images/ai-apple.png";
-    document.getElementById("backgroundImages").src="http://localhost:3000/home/images/apple-gif.gif";
+    document.body.style.backgroundImage = "url('http://localhost:3000/home/images/apple-gif.gif')";
+    //document.getElementById("backgroundImages").src="http://localhost:3000/home/images/apple-gif.gif";
 }
 else if(imageName === "star"){
     var url = "http://localhost:3000/home/images/ai-star.png";
-    document.getElementById("backgroundImages").src="http://localhost:3000/home/images/star-gif.gif";
+    document.body.style.backgroundImage = "url('http://localhost:3000/home/images/star-gif.gif')";
+    // document.getElementById("backgroundImages").src="http://localhost:3000/home/images/star-gif.gif";
 }
 else if(imageName === "sun"){
     var url = "http://localhost:3000/home/images/ai-sun.png";
-    document.getElementById("backgroundImages").src="http://localhost:3000/home/images/sun-gif.gif";
+    document.body.style.backgroundImage = "url('http://localhost:3000/home/images/sun-gif.gif')";
+    //document.getElementById("backgroundImages").src="http://localhost:3000/home/images/sun-gif.gif";
 }
 else if(imageName === "moon"){
     var url = "http://localhost:3000/home/images/ai-moon.png";
-    document.getElementById("backgroundImages").src="http://localhost:3000/home/images/moon-gif.gif";
+    document.body.style.backgroundImage = "url('http://localhost:3000/home/images/moon-gif.gif')";
+    //document.getElementById("backgroundImages").src="http://localhost:3000/home/images/moon-gif.gif";
 }
 else if(imageName === "clock"){
     var url = "http://localhost:3000/home/images/ai-clock.png";
-    document.getElementById("backgroundImages").src="http://localhost:3000/home/images/clock-gif.gif";
+    document.body.style.backgroundImage = "url('http://localhost:3000/home/images/clock-gif.gif')";
+    //document.getElementById("backgroundImages").src="http://localhost:3000/home/images/clock-gif.gif";
 }
 
     Http.open("GET", url);
