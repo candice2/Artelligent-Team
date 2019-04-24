@@ -218,20 +218,34 @@ function getFrame() {
         const names = getClassNames(indices)
         console.log(names);
         console.log(probs);
-        var ele = document.getElementById("suggestions");
-        console.log(ele);
-        ele.innerHTML = "";
-        var list = document.createElement("ul");
-        for(var i = 0; i < names.length; i++){
-            var link = document.createElement("a");
-            link.href = "javascript:showImage('"+names[i]+"');";
-            var t = document.createTextNode(names[i] + " (" + probs[i] + ")");
-            link.appendChild(t);
-            var li = document.createElement("li");
-            li.appendChild(link);
-            list.appendChild(li);
+        var max = 0;
+        var maxIdx;
+        for (var i=0; i < probs.length; i++){
+            console.log(probs[i])
+            if (probs[i] > max){
+                maxIdx = i;
+                max = probs[i];
+            }
         }
-        ele.appendChild(list);
+        var ele = document.getElementById("suggestions");
+        var content = "<h3 style='text-align:center;'>Looks like a " + names[maxIdx] + "! Which one am I?</h3>";
+        for (var i=0; i < names.length; i++){
+            content += "<button style='margin-top: 10px; margin-bottom: 10px; padding-left: 5px; padding-right: 5px; margin-left:10px; margin-right:10px;' onclick=showImage('"+ names[i] +"')>"+ names[i] + "</button>"
+        }
+        ele.innerHTML = content;
+        // console.log(ele);
+        // ele.innerHTML = "";
+        // var list = document.createElement("ul");
+        // for(var i = 0; i < names.length; i++){
+        //     var link = document.createElement("a");
+        //     link.href = "javascript:showImage('"+names[i]+"');";
+        //     var t = document.createTextNode(names[i] + " (" + probs[i] + ")");
+        //     link.appendChild(t);
+        //     var li = document.createElement("li");
+        //     li.appendChild(link);
+        //     list.appendChild(li);
+        // }
+        // ele.appendChild(list);
         //set the table 
         setTable(names, probs)
     }

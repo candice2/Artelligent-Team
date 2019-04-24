@@ -47,11 +47,14 @@
 <div id="container" style="margin-top: 40px; margin-bottom: 40px;" align="center">
 
     <div class="row">
+            <div id="suggestions" style="background-color: white; margin-left: 30%;"></div>
+        
         <div class="col" style="margin-left: 100px;">
             <!-- <div class="col" style ='margin-left:100px;'> -->
-            <div style="margin-right: 40%">
-                <i><b>Choose the colour of your brush!</b></i><input type="color" class="js-color-picker"
+            <div style="margin-right: 80%">
+                <i><b>Choose brush color and size!</b></i><input type="color" class="js-color-picker"
                                                                      id='colorpicker' style="margin-left: 3%">
+                <input type="range" min="5" max="20" value="10" class="slider" id="myRange" style='margin-top:20px;'>
             </div>
             <div class="row">
                 <!-- <img id="backgroundImages" style="width: 20%;border-color: #FFFF00"> -->
@@ -59,15 +62,15 @@
                     style="border:1px solid #b9bfc9;margin-top:25px;"></canvas>
 
             </div>
-            <div class="btn-group" style='margin-top:40px; '>
+            <!-- <div class="btn-group" style='margin-top:40px; '>
                 <input type="range" min="5" max="20" value="10" class="slider" id="myRange" style='margin-top:20px;'>
                 <button type="button" class="btn" onclick='erase()'
                         style='margin-left:10px; color: #33CAFF; background-color: black;' disabled>Clear
                 </button>
 
-            </div>
+            </div> -->
         </div>
-        <div id="suggestions"></div>
+        <!-- <div id="suggestions"></div> -->
     </div>
 </div>
 
