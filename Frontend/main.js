@@ -163,26 +163,27 @@ function showImage(imageName){
     //const url="http://localhost:3000/imageUrl?image=" + imageName;
     var url="";
 if(imageName === 'apple') {
-    var url = "http://localhost:3000/home/images/apple.png";
+    var url = "http://localhost:3000/home/images/ai-apple.png";
 }
 else if(imageName === "star"){
-    var url = "http://localhost:3000/home/images/star.png";
+    var url = "http://localhost:3000/home/images/ai-star.png";
 }
 else if(imageName === "sun"){
-    var url = "http://localhost:3000/home/images/sun.png";
+    var url = "http://localhost:3000/home/images/ai-sun.png";
 }
 else if(imageName === "moon"){
-    var url = "http://localhost:3000/home/images/moon.png";
+    var url = "http://localhost:3000/home/images/ai-moon.png";
 }
 else if(imageName === "clock"){
-    var url = "http://localhost:3000/home/images/clock.png";
+    var url = "http://localhost:3000/home/images/ai-clock.png";
 }
 
     Http.open("GET", url);
     Http.send();
     Http.onreadystatechange=(e)=>{
     console.log(url);
-    displayImage({x:400,y:100},{x:1500,y:1500},url);
+    //displayImage({x:400,y:100},{x:1500,y:1500},url);
+    displayImage({x:400,y:50},{x:1100,y:1100},url);
     return false;
 }
 
